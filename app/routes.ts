@@ -1,6 +1,7 @@
 import { ArrayCodec, Void } from "@nomadshiba/codec";
 import { Schema } from "./libs/Router.ts";
 import { ModelOutput } from "./handlers/models/ModelOutput.ts";
+import { AgentInput, AgentPartialInput } from "./handlers/agents/AgentInput.ts";
 import { AgentOutput } from "./handlers/agents/AgentOutput.ts";
 import { ProviderInput, ProviderPartialInput } from "./handlers/providers/ProviderInput.ts";
 import { ProviderOutput } from "./handlers/providers/ProviderOutput.ts";
@@ -10,10 +11,10 @@ export const RoutesSchema = {
     "GET /v1/models": { input: Void, output: new ArrayCodec(ModelOutput) },
     "GET /v1/models/:modelName": { input: Void, output: ModelOutput },
 
-    "POST /v1/agents": { input: Void, output: Void },
+    "POST /v1/agents": { input: AgentInput, output: Void },
     "GET /v1/agents": { input: Void, output: new ArrayCodec(AgentOutput) },
     "GET /v1/agents/:agentId": { input: Void, output: AgentOutput },
-    "PATCH /v1/agents/:agentId": { input: Void, output: Void },
+    "PATCH /v1/agents/:agentId": { input: AgentPartialInput, output: Void },
     "DELETE /v1/agents/:agentId": { input: Void, output: Void },
 
     "POST /v1/providers": { input: ProviderInput, output: Void },
