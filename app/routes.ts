@@ -1,14 +1,14 @@
 import { ArrayCodec, Void } from "@nomadshiba/codec";
-import { Schema } from "./libs/Router.ts";
-import { ModelOutput } from "./handlers/models/ModelOutput.ts";
-import { AgentInput } from "./handlers/agents/AgentInput.ts";
-import { AgentOutput } from "./handlers/agents/AgentOutput.ts";
-import { ProviderInput } from "./handlers/providers/ProviderInput.ts";
-import { ProviderOutput } from "./handlers/providers/ProviderOutput.ts";
 import { ChatInput } from "~/handlers/chats/ChatInput.ts";
-import { ChatMessageInput } from "~/handlers/chats/messages/ChatMessageInput.ts";
 import { ChatOutput } from "~/handlers/chats/ChatOutput.ts";
 import { ChatMessageOutput } from "~/handlers/chats/messages/ChatMessageOutput.ts";
+import { MessageContentUser } from "~/handlers/chats/messages/MessageContent.ts";
+import { AgentInput } from "./handlers/agents/AgentInput.ts";
+import { AgentOutput } from "./handlers/agents/AgentOutput.ts";
+import { ModelOutput } from "./handlers/models/ModelOutput.ts";
+import { ProviderInput } from "./handlers/providers/ProviderInput.ts";
+import { ProviderOutput } from "./handlers/providers/ProviderOutput.ts";
+import { Schema } from "./libs/Router.ts";
 
 export type RoutesSchema = typeof RoutesSchema;
 export const RoutesSchema = {
@@ -33,7 +33,7 @@ export const RoutesSchema = {
     "PATCH /v1/chats/:chatId": { input: ChatInput.partial(), output: Void },
     "DELETE /v1/chats/:chatId": { input: Void, output: Void },
 
-    "POST /v1/chats/:chatId/messages": { input: ChatMessageInput, output: Void },
+    "POST /v1/chats/:chatId/messages": { input: MessageContentUser, output: Void },
     "GET /v1/chats/:chatId/messages": { input: Void, output: new ArrayCodec(ChatMessageOutput) },
     "GET /v1/chats/:chatId/messages/:messageId": { input: Void, output: ChatMessageOutput },
     "DELETE /v1/chats/:chatId/messages/:messageId": { input: Void, output: Void },

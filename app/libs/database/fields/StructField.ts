@@ -1,4 +1,4 @@
-import { Column, Field, FieldGeneric, FieldValue } from "~/libs/database/Field.ts";
+import { Column, Field, FieldGeneric, FieldValue } from "~/libs/database/Schema.ts";
 
 type WithoutQuestion<K extends string> = K extends `${infer Base}?` ? Base : K;
 type IsOptional<K extends string> = K extends `${string}?` ? true : false;

@@ -1,4 +1,4 @@
-import { Column, Field, FieldGeneric, FieldValue } from "~/libs/database/Field.ts";
+import { Column, Field, FieldGeneric, FieldValue } from "~/libs/database/Schema.ts";
 
 export type VariantsGeneric = Record<string, FieldGeneric>;
 export type EnumFieldValue<T extends VariantsGeneric> = {

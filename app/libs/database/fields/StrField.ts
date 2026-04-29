@@ -1,4 +1,4 @@
-import { Field } from "~/libs/database/Field.ts";
+import { Field } from "~/libs/database/Schema.ts";
 
 export type StrField = Field<string>;
 export function StrField(): StrField {
