@@ -41,7 +41,7 @@ const query = nest.query(({ ref, with, every, some, none }) => every(
 )).select(User, HasName);
 await query.take(10).drop(5).toArray();
 await query.first();
-await for (const [entity, { value: name }] of query) {}
+for await (const [entity, { value: name }] of query) {}
 
 const query = nest.query(({ ref, with, every, some, none }) => every(
     with(User).has({
@@ -54,7 +54,7 @@ const query = nest.query(({ ref, with, every, some, none }) => every(
     }),
 )).select(User);
 
-await for (const [entity, user] of query) {}
+for await (const [entity, user] of query) {}
 
 nest.query(({ ref, with, every, some, none }) => every(
     with(User).has({
